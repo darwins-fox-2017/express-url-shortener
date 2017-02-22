@@ -40,8 +40,8 @@ router.get('/:urlId/delete', function(req, res, next) {
 // /url/<%= dataUrl[i].id %>/redirect
 router.get('/shortener/:shortener', function(req, res, next) {
   db.Url.findOne({where: {shortener: req.params.shortener}}).then(function(result) {
-    result.clickCount++
-    result.update({}).then(function() {
+    //result.clickCount++
+    return result.update({ clickCount: `${Number(result.clickCount) + 1}`  }).then(function() {
       res.redirect(result.url)
     })
   })
