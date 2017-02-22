@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1></h1>
+    <p>Welcome tossss express</p>
+    <p></p>
+    <h3><a href="/new">Buat baru</a></h3>
+
+    <h4>Express URL Shortener</h4>
+    <table action="" style ="width: 80%;">
+
+      <tr>
+        <td style ="background: #2196F3; color:#fff;">No</td>
+        <td style ="background: #2196F3; color:#fff;">Link Submit</td>
+        <td style ="background: #2196F3; color:#fff;">Shortener Link</td>
+        <td style ="background: #2196F3; color:#fff;">Click Count</td>
+
+      </tr>
+      <tbody>
+
+        <% for(var i = 0; i < semua_links.length; i++) { %>
+        <tr>
+          <td><%= semua_links[i].id %></td>
+          <td><%= semua_links[i].link_awal %></td>
+          <td><a href="/url/<%=semua_links[i].link_short%>"><%= semua_links[i].link_short %></a></td>
+          <td><%= semua_links[i].link_count %></td>
+
+        </tr>
+        <% } %>
+      </tbody>
+
+    </table>
+  </body>
+</html>
