@@ -1,0 +1,14 @@
+{
+  "development": {
+    "username": "firmanPebrizal",
+    "password": "1234",
+    "database": "url",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "base_url": "https://thawing-harbor-59078.herokuapp.com/"
+  }
+}

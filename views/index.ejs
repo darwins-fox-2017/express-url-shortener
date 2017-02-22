@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table style="width:70%">
+      <tr>
+        <th>No.</th>
+        <th>URL</th>
+        <th>URL shorten</th>
+        <th>click</th>
+      </tr>
+      <% for(let i=0; i<data.length; i++){ %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td> <%= data[i].url_origin %> </td>
+          <td> <a href="/<%= data[i].url_shorten %>"> <%= data[i].url_shorten %> </a> </td>
+          <td><%= data[i].click_count %></td>
+        </tr>
+      <%}%>
+
+    </table><br><br>
+    <form action="/" method="POST" style="width:50%">
+      <fieldset>
+        <legend>Shorten new link:</legend>
+          link:<br><br>
+          <input type="text" name="linkOrigin"><br><br>
+          <input type="submit" value="Get shorter link">
+      </fieldset>
+    </form>
+  </body>
+</html>
