@@ -11,13 +11,17 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     hooks: {
-      beforeCreate: function(url, options) {
-       var randomText = "";
-       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-       for( var i = 0; i < 5; i++ ) {
-         randomText += possible.charAt(Math.floor(Math.random() * possible.length));
-       }
-      url.shortener = `www.hoax${randomText}.com`
+      beforeCreate: function(link, options) {
+        var randomText = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for( var i = 0; i < 5; i++ ) {
+          randomText += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        if(!/^http/.test(link.url)){
+          link.url = `http://${link.url}`
+        }
+        link.shortener = `${randomText}`
+        link.clickCount = 0
       }
     }
   });

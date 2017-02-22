@@ -17,7 +17,7 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/new', function(req, res, next) {
-  db.Url.create({url: req.body.url, shortener: '', clickCount: 0 })
+  db.Url.create({url: req.body.url})
   .then(function(result) {
     // setelah selesai insert data, render halaman kembali ke index
     res.redirect('/url')
@@ -38,11 +38,11 @@ router.get('/:urlId/delete', function(req, res, next) {
 });
 
 // /url/<%= dataUrl[i].id %>/redirect
-router.get('/:urlId/redirect', function(req, res, next) {
-  db.Url.findById(req.params.urlId).then(function(result) {
-
-    return result.update({ clickCount: `${Number(result.clickCount) + 1}` }).then(function() {
-      res.redirect(`https://${result.url}`)
+router.get('/shortener/:shortener', function(req, res, next) {
+  db.Url.findOne({where: {shortener: req.params.shortener}}).then(function(result) {
+    result.clickCount++
+    result.update({}).then(function() {
+      res.redirect(result.url)
     })
   })
 });

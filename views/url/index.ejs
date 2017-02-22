@@ -29,7 +29,7 @@
           <th scope="row"> <%= i + 1 %> </th>
           <td> <%= dataUrl[i].id %> </td>
           <td> <a href="<%= dataUrl[i].url %>"> <%= dataUrl[i].url %> </a> </td>
-          <td> <a href="url/<%= dataUrl[i].id %>/redirect"> <%= dataUrl[i].shortener %> </a> </td>
+          <td> <a href="url/shortener/<%= dataUrl[i].shortener %>"> <%= dataUrl[i].shortener %> </a> </td>
           <td> <%= dataUrl[i].clickCount %> </td>
           <td> <a href="url/<%= dataUrl[i].id %>/delete" onclick="return confirm('yakin mau diapus nyet?')">DELETE</a> </td>
           <% } %>
