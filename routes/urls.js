@@ -16,6 +16,16 @@ router.get('/new', function(req, res, next){
   res.render('urls/create')
 })
 
+router.get('/:id', function(req, res, next){
+  db.Link.find({
+    where: {
+      id: req.params.id
+    }
+  }).then((link) => {
+    res.render('urls/show', {link:link})
+  })
+})
+
 router.post('/create', function(req, res, next){
   db.Link.find({
     where: {
@@ -42,6 +52,28 @@ router.post('/create', function(req, res, next){
 
 router.get('/:id/delete', function(req, res, next){
   db.Link.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(() => {
+    res.redirect('/urls')
+  })
+})
+
+router.get('/:id/edit', function(req, res, next){
+  db.Link.find({
+    where: {
+      id: req.params.id
+    }
+  }).then((link) => {
+    res.render('urls/edit', {link:link})
+  })
+})
+
+router.post('/:id/update', function(req, res, next){
+  db.Link.update({
+    url: req.body.url
+  }, {
     where: {
       id: req.params.id
     }

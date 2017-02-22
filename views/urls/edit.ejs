@@ -12,10 +12,10 @@
                 <div class="row">
                     <div class="eight wide column">
                         <h3 class="ui header">Create new User</h3>
-                        <form class="ui form wide" action="create" method="post">
+                        <form class="ui form wide" action="/urls/<%= link.id %>/update" method="post">
                             <div class="field">
                                 <label>Original URL</label>
-                                <input name="url" placeholder="Url" type="text">
+                                <input name="url" placeholder="Url" type="text" value="<%= link.url %>">
                             </div>
                             <button class="ui primary button" type="submit">Shorten please!</button>
                         </form>
