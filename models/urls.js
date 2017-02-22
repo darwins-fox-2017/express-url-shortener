@@ -11,15 +11,20 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     hooks:{
-      beforeCreate:function(url, option){
+      beforeCreate:function(link, option){
         let unique = "ASBCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsstuvwxyz0123456789"
         let urlUnique = ""
+
+        if (!/^https:/.test(link.url)) {
+          urlUnique += `https://${link.url}`
+        }
 
         for (let i = 0; i < 7; i++) {
           urlUnique += unique[Math.floor(Math.random() * unique.length )]
         }
-        url.short_url = urlUnique
-        url.count_url = 0
+
+        link.short_url = urlUnique
+        link.count_url = 0
       }
     }
   });

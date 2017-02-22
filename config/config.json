@@ -4,8 +4,7 @@
     "password": "mrei91",
     "database": "shortUrl-db",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "base_url":"http://localhost:3000/"
+    "dialect": "postgres"
   },
   "production": {
     "use_env_variable": "DATABASE_URL",
