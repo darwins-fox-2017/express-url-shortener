@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models')
+
+var env = process.env.MODE_ENV || 'development';
+var config =  require(__dirname + '/../config/config.json')[env];
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   models.Urls.findAll().then(function(urls){
-    res.render('index', { title: 'Short Urls', urls:urls });
+    res.render('index', { title: 'Short Urls', urls:urls, urlDinamis:config.base_url });
   })
 });
 
@@ -16,6 +20,25 @@ router.post('/create', function(req, res, next) {
     res.redirect('/')
   })
 });
+
+router.get('/:short_url', function(req, res, next) {
+  let setting_url = `${req.params.short_url}`
+  models.Urls.findOne(
+    {
+      where: {
+      short_url:setting_url
+    }
+  }).then(function(addUrl){
+    if(addUrl === null){
+      console.log("nothing data");
+    }else {
+      res.redirect("https://"+ addUrl.url)
+      addUrl.click_count++
+      addUrl.update({click_count:addUrl.click_count, updatedAt:new Date()})
+    }
+  })
+});
+
 
 
 
