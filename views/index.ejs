@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>URL Shortened</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>URL Shortened</h1>
+    <p>Welcome to URL Shortened</p>
+    <a href="/new">Insert new Url</a>
+<table>
+  <tr>
+    <th>No</th>
+    <th>Original URL</th>
+    <th>Shorten URL</th>
+    <th>Click</th>
+  </tr>
+  <% let count = 1 %>
+  <% url.forEach(function(url){ %>
+  <tr>
+    <td><%= count %></td>
+    <td><%=url.ori_url %></td>
+    <td><a href="/link/<%= url.shorten_url %>"><%= 'localhost:3000/' + url.shorten_url %></a></td>
+    <td><%=url.is_clicked %></td>
+  </tr>
+  <% count++ %>
+  <% }) %>
+</table>
+  </body>
+</html>
