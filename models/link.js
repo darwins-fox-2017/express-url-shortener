@@ -28,6 +28,9 @@ module.exports = function(sequelize, DataTypes) {
       beforeCreate: function (url) {
         // Do other stuf
         url.short = crypto.randomBytes(2).toString('hex')
+        if(!/^http/.test(url.link)){
+          url.link = `http://${url.link}`
+        }
       }
     },
   });
