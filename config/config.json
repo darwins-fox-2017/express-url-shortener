@@ -1,0 +1,13 @@
+{
+  "development": {
+    "username": "isumizumi",
+    "password": "1234",
+    "database": "url_shortener",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "base_url":"https://whispering-waters-61711.herokuapp.com/"
+  }
+}
