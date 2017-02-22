@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="title" style="text-align: center;">
+          <h1><%= title %></h1>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><center><strong>Table URL</strong></center></div>
+          <table class="table" border="1">
+            <tr>
+              <th><center>ID</th>
+              <th><center>URL</th>
+              <th><center>Short URL</th>
+              <th><center>Click Count</th>
+              <th><center>Action</th>
+            </tr>
+            <% for(var i = 0; i < data_url.length; i++) { %>
+            <tr>
+              <td><%= data_url[i].id %></td>
+              <td><%= data_url[i].url %></td>
+              <td><a href="/<%= data_url[i].short_url %>" target="_blank">https://<%= new_url %><%= data_url[i].short_url %></a></td>
+              <td><%= data_url[i].click_count %></td>
+              <td>
+                <center>
+                <button type="submit" class="btn-group btn-group-xs"><a href = "/update/<%= data_url[i].id %>">Edit<a/></button>
+                <button type="submit" class="btn-group btn-group-xs"><a href = "/delete/<%= data_url[i].id %>" onclick="return confirm('Are you sure?')">Delete<a/></button>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+          </div>
+        </div>
+        <br>
+        <div class="panel panel-default">
+          <div class="panel-heading"><center><strong>Form Add URL</strong></center></div>
+            <form action="/short_url" method="post">
+              Add URL   :
+              <input type="text" name="url" placeholder="sample: detik.com"><br><br>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+  </body>
+</html>
