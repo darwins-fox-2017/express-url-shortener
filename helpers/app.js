@@ -1,7 +1,4 @@
 let moment = require('moment')
-const getDomainUrl = require('get-domain-url');
-
-
 
 module.exports = {
   beautifyUrl : function(code){
