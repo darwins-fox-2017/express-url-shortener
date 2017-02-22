@@ -16,7 +16,6 @@
       <thead>
         <tr>
           <th>Number</th>
-          <th>Url Id Database</th>
           <th>Url</th>
           <th>Shortner</th>
           <th>Click Count</th>
@@ -27,7 +26,6 @@
         <% for (let i = 0; i < dataUrl.length; i++) { %>
         <tr>
           <th scope="row"> <%= i + 1 %> </th>
-          <td> <%= dataUrl[i].id %> </td>
           <td> <a href="<%= dataUrl[i].url %>"> <%= dataUrl[i].url %> </a> </td>
           <td> <a href="url/shortener/<%= dataUrl[i].shortener %>"> <%= dataUrl[i].shortener %> </a> </td>
           <td> <%= dataUrl[i].clickCount %> </td>
