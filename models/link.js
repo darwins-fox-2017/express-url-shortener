@@ -1,4 +1,6 @@
 'use strict';
+var shortid = require('shortid');
+
 module.exports = function(sequelize, DataTypes) {
   var Link = sequelize.define('Link', {
     url: DataTypes.STRING,
@@ -8,6 +10,11 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+      }
+    },
+    hooks: {
+      beforeCreate : function(link){
+        link.shorted = shortid.generate()
       }
     }
   });

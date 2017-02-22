@@ -44,8 +44,7 @@ router.post('/create', function(req, res, next){
 
       db.Link.create({
         url: addhttp(req.body.url),
-        click: 0,
-        shorted: shortid.generate()
+        click: 0
       }).then(() => {
         res.redirect('/urls')
         // res.send(req.body.url)
