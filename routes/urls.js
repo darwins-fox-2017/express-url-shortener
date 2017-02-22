@@ -34,8 +34,14 @@ router.post('/create', function(req, res, next){
   }).then((link) => {
     console.log(link);
     if (link == null) {
+      function addhttp(url) {
+          if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+              url = "http://" + url;
+          }
+          return url;
+      }
       db.Link.create({
-        url: req.body.url,
+        url: addhttp(req.body.url),
         click: 0,
         shorted: shortid.generate()
       }).then(() => {
