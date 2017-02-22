@@ -15,8 +15,8 @@ module.exports = function(sequelize, DataTypes) {
         let unique = "ASBCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsstuvwxyz0123456789"
         let urlUnique = ""
 
-        if (!/^https:/.test(link.url)) {
-          urlUnique += `https://${link.url}`
+        if (!/^http/.test(link.url)) {
+          link.url = `http://${link.url}`
         }
 
         for (let i = 0; i < 7; i++) {

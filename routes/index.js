@@ -32,9 +32,9 @@ router.get('/:short_url', function(req, res, next) {
     if(addUrl === null){
       console.log("nothing data");
     }else {
-      res.redirect("https://"+ addUrl.url)
-      addUrl.click_count++
-      addUrl.update({click_count:addUrl.click_count, updatedAt:new Date()})
+      addUrl.count_url++
+      addUrl.update({count_url:addUrl.count_url, updatedAt:new Date()})
+      res.redirect(addUrl.url)
     }
   })
 });
