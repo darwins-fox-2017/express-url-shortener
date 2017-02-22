@@ -4,6 +4,13 @@ var router = express.Router();
 let db = require('../models')
 var shortid = require('shortid');
 
+function addhttp(url) {
+    if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+        url = "http://" + url;
+    }
+    return url;
+}
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   db.Link.findAll().then((links) => {
@@ -34,12 +41,7 @@ router.post('/create', function(req, res, next){
   }).then((link) => {
     console.log(link);
     if (link == null) {
-      function addhttp(url) {
-          if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
-              url = "http://" + url;
-          }
-          return url;
-      }
+
       db.Link.create({
         url: addhttp(req.body.url),
         click: 0,
@@ -77,8 +79,9 @@ router.get('/:id/edit', function(req, res, next){
 })
 
 router.post('/:id/update', function(req, res, next){
+
   db.Link.update({
-    url: req.body.url
+    url: addhttp(req.body.url)
   }, {
     where: {
       id: req.params.id
