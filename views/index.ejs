@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form class="" action="/urls" method="post">
+      <label><input type="text" name="link" value=""></label> <br><br>
+      <input type="submit" value="Masukin ajah">
+    </form>
+
+    <table>
+
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Link</td>
+          <td>Shorted</td>
+          <td>Click</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < links.length; i++) { %>
+        <tr>
+          <td><%= links[i].id %></td>
+          <td><a href="<%= links[i].link %>"><%= links[i].link %></a></td>
+          <td><a href="/go/<%= links[i].short %>"><%= links[i].short %></a></td>
+          <td><%= links[i].click %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

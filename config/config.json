@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "adams",
+    "password": null,
+    "database": "shorturl",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
