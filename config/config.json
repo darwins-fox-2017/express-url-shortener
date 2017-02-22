@@ -1,0 +1,13 @@
+{
+  "development": {
+    "username": "mrei91",
+    "password": "mrei91",
+    "database": "shortUrl-db",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "urlBase":"http://localhost:3000/"
+  },
+  "production": {
+    ""
+  }
+}
