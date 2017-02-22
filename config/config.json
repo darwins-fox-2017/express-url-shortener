@@ -1,0 +1,13 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "express_url_shortener",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "base_url": "https://gentle-basin-25080.herokuapp.com/"
+  }
+}

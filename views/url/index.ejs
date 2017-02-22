@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TodoList</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>Shortener Link</h1>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Url</th>
+        <th>Shortner</th>
+        <th>Click Count</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let i = 0; i < dataUrl.length; i++) { %>
+        <tr>
+          <th scope="row"> <%= i + 1 %> </th>
+          <td> <a href="<%= dataUrl[i].url %>"> <%= dataUrl[i].url %> </a> </td>
+          <td> <a href="url/shortener/<%= dataUrl[i].shortener %>"> <%= dataUrl[i].shortener %> </a> </td>
+          <td> <%= dataUrl[i].clickCount %> </td>
+          <td> <a href="url/<%= dataUrl[i].id %>/delete" onclick="return confirm('yakin mau diapus nyet?')">DELETE</a> </td>
+          <% } %>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <a href="url/new">Add new link to Shortener Link</a>
+  </form>
+</body>
+</html>
